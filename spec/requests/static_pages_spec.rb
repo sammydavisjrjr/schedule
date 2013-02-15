@@ -9,7 +9,7 @@ describe "StaticPages" do
     end
     it "should have the right title" do
       visit '/static_pages/home'
-      page.should have_selector('title',
+      page.should_not have_selector('title',
                                 :text => "Schedule IT | Home")
     end
   end
