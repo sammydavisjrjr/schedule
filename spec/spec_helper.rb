@@ -12,9 +12,15 @@ Spork.prefork do
   require 'rspec/rails'
   require 'rspec/autorun'
 
+  # AbstractController::Helpers::ClassMethods.module_eval do def helper(*args, &block); modules_for_helpers(args).each {|mod| add_template_helper(mod)}; _helpers.module_eval(&block) if block_given?; end end
+
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
+
+  # Original file
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+  #Changed to find base support directory
+  Dir[Rails.root.join("spec/support/*.rb")].each {|f| require f}
 
   RSpec.configure do |config|
     # ## Mock Framework
