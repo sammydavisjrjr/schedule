@@ -35,6 +35,9 @@ Schedule::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 
+  #factory girl setup
+#  config.gem "thoughtbot-factory_girl", :lib => "factory_girl", :source => "http://gems.github.com"
+
   # Speed up tests by lowering BCrypt's cost function.
   require 'bcrypt'
   silence_warnings do
