@@ -30,10 +30,23 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
 
+  it { should respond_to(:admin)}
   it { should respond_to(:authenticate) }
 
+  it { should respond_to(:admin) }
+  it { should respond_to(:authenticate) }
 
   it { should be_valid }
+  it { should_not be_admin }
+
+  describe "with admin attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
+    end
+
+    it { should be_admin }
+  end
 
   describe "when name is not present" do
     before { @user.name = " " }
@@ -91,8 +104,6 @@ describe User do
     before { @user.password_confirmation = nil }
     it { should_not be_valid }
   end
-
-
 
   describe "with a password that's too short" do
     before { @user.password = @user.password_confirmation = "a" * 5 }
