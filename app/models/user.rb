@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
                          WHERE follower_id = :user_id"
 
     Micropost.where("user_id IN (#{followed_user_ids}) OR user_id = :user_id",
-          user_id: self.id)
+          user_id: self.id).order('created_at DESC')
 
 #    microposts.from_users_followed_by(self)
   end
